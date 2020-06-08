@@ -1,4 +1,4 @@
-# myweb
+# web
 
 > A Vue.js project
 
