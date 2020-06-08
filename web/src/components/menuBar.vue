@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import anime from 'animejs'
 export default {
   name: 'menuBar',
   props: {
@@ -34,7 +35,12 @@ export default {
     paging (tag) {
       let dom = this.$el.querySelector(`[data-id="${tag}"]`)
       let bar = this.$el.querySelector('.bar')
-      bar.style.cssText = `left: ${dom.offsetLeft}px;width: ${dom.offsetWidth}px`
+      anime({
+        targets: bar,
+        left: dom.offsetLeft,
+        width: dom.offsetWidth,
+        duration: 500
+      })
     }
   }
 }
@@ -51,7 +57,7 @@ export default {
     }
     >.bar{
       position: absolute;bottom: 0;height: .2rem;background-color: #3a8ee6;
-      left: 0;transition: all .5s;border-radius: 1rem;
+      left: 0;border-radius: 1rem;
     }
   }
 </style>
