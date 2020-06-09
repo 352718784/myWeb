@@ -1,8 +1,5 @@
 <template>
     <div class="main-view">
-<!--      <section class="user">-->
-<!--         <i class="ri-user-3-fill" @click="$router.push({path: '/mainView/mainPage'})"></i>-->
-<!--      </section>-->
       <menu-bar></menu-bar>
       <article class="sub-view">
         <transition name="fade" mode="out-in" >
@@ -21,11 +18,6 @@ export default {
   components: {MenuBar},
   data () {
     return {
-      menuList: [
-        {index: '/mainView/mainPage', name: '主页'},
-        {index: '/mainView/devTools', name: '开发工具'}
-      ],
-      defaultActive: ''
     }
   },
   mounted () {

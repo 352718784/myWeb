@@ -27,7 +27,8 @@ export default {
     return {
       menuList: [
         {name: '主页', id: '/mainView/mainPage'},
-        {name: '开发工具', id: '/mainView/devTools'}
+        {name: '开发工具', id: '/mainView/devTools'},
+        {name: 'demo样例', id: '/mainView/demoExample'}
       ]
     }
   },

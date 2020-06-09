@@ -38,11 +38,20 @@ export default {
     return {
       webSite: [
         {name: '百度', src: 'https://www.baidu.com/'},
+        {name: '百度地图3.0开发文档', src: 'http://lbsyun.baidu.com/index.php?title=jspopular3.0'},
+        {name: '百度翻译', src: 'https://fanyi.baidu.com/?aldtype=16047#auto/zh'},
         {name: 'VUE', src: 'https://cn.vuejs.org/v2/guide/'},
         {name: 'VUEX', src: 'https://vuex.vuejs.org/zh/installation.html'},
         {name: 'VUERouter', src: 'https://router.vuejs.org/zh/'},
         {name: 'elementUI', src: 'https://element.eleme.cn/#/zh-CN/component/installation'},
-        {name: 'remix', src: 'https://remixicon.cn'}
+        {name: '图标库（remix）', src: 'https://remixicon.cn'},
+        {name: 'kbase_ui', src: 'https://kfront.kedacom.com/kbaseui/dev-doc/default'},
+        {name: '视讯通', src: 'https://kfront.kedacom.com/product/6/doc/30940'},
+        {name: '流媒体', src: 'https://kfront.kedacom.com/product/5/doc/32312'},
+        {name: '海豚发布平台(ops/kedacom@123)', src: 'https://192.168.20.180/dops/#/admin/login'},
+        {name: '配色网站（渐变色）', src: 'https://webgradients.com/'},
+        {name: 'animeJs动画插件', src: 'https://www.animejs.cn/documentation/'},
+        {name: '拟态（让你的按钮更立体）', src: 'https://neumorphism.io/#55b9f3'}
       ],
       selectedItem: false,
       searchValue: '',
@@ -96,7 +105,7 @@ export default {
         margin: .5rem;cursor: pointer;user-select: none;
         color: $fontCol2;
         &.activity{
-          color: $fontCol1
+          color: $blue1;font-weight: bold;
         }
       }
     }

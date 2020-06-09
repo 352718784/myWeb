@@ -20,6 +20,11 @@ export default new Router({
           path: 'devTools',
           component: () => import('../subView/devTools/devTools'),
           name: 'devTools'
+        },
+        {
+          path: 'demoExample',
+          component: () => import('../subView/demoExample/demoExample'),
+          name: 'demoExample'
         }
       ]
     }
