@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import mainView from '../mainView'
-import devTools from '../subView/devTools/devTools'
+// import devTools from '../subView/devTools/devTools'
 Vue.use(Router)
 
 export default new Router({
@@ -18,7 +18,7 @@ export default new Router({
         },
         {
           path: 'devTools',
-          component: devTools,
+          component: () => import('../subView/devTools/devTools'),
           name: 'devTools'
         }
       ]

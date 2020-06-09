@@ -39,7 +39,7 @@ export default {
         targets: bar,
         left: dom.offsetLeft,
         width: dom.offsetWidth,
-        duration: 500
+        duration: 1000
       })
     }
   }

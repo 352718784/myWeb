@@ -6,10 +6,17 @@
 
 <script>
 export default {
-  name: 'mainPage'
+  name: 'mainPage',
+  data () {
+    return {
+      catalog: []
+    }
+  }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .mainPage{
+    height: 100%;
+  }
 </style>

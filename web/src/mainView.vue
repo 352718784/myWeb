@@ -1,12 +1,14 @@
 <template>
     <div class="main-view">
-      <section class="user">
-         <i class="ri-user-3-fill" @click="$router.push({path: '/mainView/mainPage'})"></i>
-      </section>
+<!--      <section class="user">-->
+<!--         <i class="ri-user-3-fill" @click="$router.push({path: '/mainView/mainPage'})"></i>-->
+<!--      </section>-->
       <menu-bar></menu-bar>
       <article class="sub-view">
-        <transition name="fade" >
-          <router-view class="fade-item"></router-view>
+        <transition name="fade" mode="out-in" >
+          <keep-alive>
+            <router-view class="fade-item"></router-view>
+          </keep-alive>
         </transition>
       </article>
     </div>
@@ -21,7 +23,7 @@ export default {
     return {
       menuList: [
         {index: '/mainView/mainPage', name: '主页'},
-        {index: '/mainView/devTools', name: '开发工具', path: '/mainView/devTools'}
+        {index: '/mainView/devTools', name: '开发工具'}
       ],
       defaultActive: ''
     }
@@ -50,16 +52,13 @@ export default {
       flex: 1;position: relative;
     }
     .fade-item{
-      transition: all .5s;
+      transition: all .3s;
     }
     .fade-enter-active, .fade-leave-active {
       transform: translateX(0);
     }
     .fade-enter, .fade-leave-to {
       opacity: 0;transform: translateX(-5rem);
-    }
-    .fade-leave-active {
-      position: absolute;
     }
   }
 </style>
