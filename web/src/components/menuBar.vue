@@ -1,11 +1,11 @@
 <template>
-    <ol class="menuBar">
-      <li @click="$router.push(item.id)"
-          :data-id="item.id" :key="item.id"
-          :class="{activity: page === item.id}"
-          v-for="item in menuList">{{item.name}}</li>
-      <div class="bar"></div>
-    </ol>
+  <nav class="menuBar">
+    <a @click="$router.push(item.id)"
+        :data-id="item.id" :key="item.id"
+        :class="{activity: page === item.id}"
+        v-for="item in menuList">{{item.name}}</a>
+    <div class="bar"></div>
+  </nav>
 </template>
 
 <script>
@@ -28,7 +28,8 @@ export default {
       menuList: [
         {name: '主页', id: '/mainView/mainPage'},
         {name: '开发工具', id: '/mainView/devTools'},
-        {name: 'demo样例', id: '/mainView/demoExample'}
+        {name: 'demo样例', id: '/mainView/demoExample'},
+        {name: '问题收集', id: '/mainView/collectedQuestions'},
       ]
     }
   },
@@ -50,7 +51,7 @@ export default {
 <style scoped lang="scss">
   .menuBar{
     display: flex;position: relative;user-select: none;
-    >li{
+    >a{
       margin: .5rem 1rem;cursor: pointer;color: gray;
       &.activity{
         color: #313131;

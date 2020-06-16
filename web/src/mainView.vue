@@ -41,7 +41,7 @@ export default {
       }
     }
     .sub-view {
-      flex: 1;position: relative;
+      flex: 1;position: relative; overflow: hidden;
     }
     .fade-item{
       transition: all .3s;

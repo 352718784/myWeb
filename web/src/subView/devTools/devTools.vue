@@ -45,13 +45,11 @@ export default {
         {name: 'VUERouter', src: 'https://router.vuejs.org/zh/'},
         {name: 'elementUI', src: 'https://element.eleme.cn/#/zh-CN/component/installation'},
         {name: '图标库（remix）', src: 'https://remixicon.cn'},
-        {name: 'kbase_ui', src: 'https://kfront.kedacom.com/kbaseui/dev-doc/default'},
-        {name: '视讯通', src: 'https://kfront.kedacom.com/product/6/doc/30940'},
-        {name: '流媒体', src: 'https://kfront.kedacom.com/product/5/doc/32312'},
-        {name: '海豚发布平台(ops/kedacom@123)', src: 'https://192.168.20.180/dops/#/admin/login'},
         {name: '配色网站（渐变色）', src: 'https://webgradients.com/'},
         {name: 'animeJs动画插件', src: 'https://www.animejs.cn/documentation/'},
-        {name: '拟态（让你的按钮更立体）', src: 'https://neumorphism.io/#55b9f3'}
+        {name: '拟态（让你的按钮更立体）', src: 'https://neumorphism.io/#55b9f3'},
+        {name: 'axios 中文文档', src: 'https://www.kancloud.cn/yunye/axios/234845'},
+        {name: '力扣，训练逻辑思维', src: 'https://leetcode-cn.com/'}
       ],
       selectedItem: false,
       searchValue: '',
@@ -64,7 +62,7 @@ export default {
       this.history.length && (this.selectedItem = this.history[0])
     },
     startOpenIframe (item) {
-      let index = comm.indexOfObj(this.history, a => a.id === item.id);
+      let index = comm.indexOfObj(this.history, a => a.id === item.id)
       if (index === -1) {
         this.history.push(item)
       }

@@ -6,8 +6,10 @@ import router from './router'
 // import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import popFunc from './components/popFunc/index'
 Vue.use(ElementUI)
-
+console.log(popFunc)
+Vue.use(popFunc)
 router.beforeEach((to, from, next) => {
   if (!to.name || to.name === 'mainView') {
     next({path: '/mainView/mainPage'})

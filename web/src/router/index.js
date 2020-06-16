@@ -25,6 +25,11 @@ export default new Router({
           path: 'demoExample',
           component: () => import('../subView/demoExample/demoExample'),
           name: 'demoExample'
+        },
+        {
+          path: 'collectedQuestions',
+          component: () => import('../subView/collectedQuestions/collectedQuestions'),
+          name: 'collectedQuestions'
         }
       ]
     }
