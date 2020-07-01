@@ -18,18 +18,34 @@ import ShaingWaterWindow from '../../components/shakingWater/shaingWaterWindow'
 import TitlePopWindow from '../../components/popFunc/titlePopWindow'
 import Parallax from '../../components/parallax/parallax'
 import DraggingCompWindow from '../../components/draggingComp/draggingCompWindow'
+import LoadingIconWindow from '../../components/loadingIcon/loadingIconWindow'
+import HoverEffectWindow from '../../components/hoverEffect/hoverEffectWindow'
+import MulticardDisplayWindow from '../../components/multiCardDisplay/multicardDisplayWindow'
+import PieMenuWindow from '../../components/pieMenu/pieMenuWindow'
 export default {
   name: 'demoExample',
-  components: {DraggingCompWindow, Parallax, TitlePopWindow, ShaingWaterWindow},
+  components: {
+    PieMenuWindow,
+    MulticardDisplayWindow,
+    HoverEffectWindow,
+    LoadingIconWindow,
+    DraggingCompWindow,
+    Parallax,
+    TitlePopWindow,
+    ShaingWaterWindow},
   data () {
     return {
       catalog: [
         {name: '带波浪的进度', component: 'shaing-water-window'},
         {name: '自定义title', component: 'title-pop-window'},
         {name: '视觉差文章展示', component: 'parallax'},
-        {name: '拖拽组件', component: 'dragging-comp-window'}
+        {name: '拖拽组件', component: 'dragging-comp-window'},
+        {name: 'loading图标', component: 'loading-icon-window'},
+        {name: '一些有趣的hover效果', component: 'hover-effect-window'},
+        {name: '多卡片显示效果', component: 'multicard-display-window'},
+        {name: '转盘菜单', component: 'pie-menu-window'}
       ],
-      selectedDemo: false
+      selectedDemo: {name: '转盘菜单', component: 'pie-menu-window'}
     }
   },
   created () {

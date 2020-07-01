@@ -23,5 +23,38 @@ const comm = new class {
     }
     return index
   }
+  indexOfTree (tree, fn, always) {
+    let stark = []
+    let arr = []
+    stark = stark.concat(tree)
+    while (stark.length) {
+      let temp = stark.shift()
+      if (temp.children && temp.children.length) stark = stark.concat(temp.children)
+      if (always) always(temp)
+      if (fn && fn(temp)) {
+        arr.push(temp)
+        break
+      }
+    }
+    return arr
+  }
+  indexOfTree2 (tree, fn) {
+    let target = []
+    debugger
+    function query (tree, fn) {
+      for (let i = 0; i++; i < tree.length - 1) {
+        if (fn && fn(tree[i])) {
+          target.push(target)
+          break
+        } else {
+          if (tree[i].children && tree[i].children.length && !target.length) {
+            query(tree.children, fn)
+          }
+        }
+      }
+    }
+    query(tree, fn)
+    return target
+  }
 }()
 export default comm

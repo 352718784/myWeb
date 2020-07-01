@@ -49,7 +49,9 @@ export default {
         {name: 'animeJs动画插件', src: 'https://www.animejs.cn/documentation/'},
         {name: '拟态（让你的按钮更立体）', src: 'https://neumorphism.io/#55b9f3'},
         {name: 'axios 中文文档', src: 'https://www.kancloud.cn/yunye/axios/234845'},
-        {name: '力扣，训练逻辑思维', src: 'https://leetcode-cn.com/'}
+        {name: '力扣，训练逻辑思维', src: 'https://leetcode-cn.com/'},
+        {name: '蓝狐，设计图稿', src: 'https://lanhuapp.com/web/#/item'},
+        {name: 'scss 中文文档', src: 'https://www.sass.hk/docs/'}
       ],
       selectedItem: false,
       searchValue: '',

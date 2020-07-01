@@ -11,7 +11,7 @@
 export default {
   name: 'codeArticle',
   props: {
-    code: []
+    code: {default () { return [] }}
   }
 }
 </script>

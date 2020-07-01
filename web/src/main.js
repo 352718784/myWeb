@@ -7,8 +7,9 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import popFunc from './components/popFunc/index'
+import ableDrapedEl from './components/draggingComp/ableDrapedEl'
 Vue.use(ElementUI)
-console.log(popFunc)
+Vue.use(ableDrapedEl)
 Vue.use(popFunc)
 router.beforeEach((to, from, next) => {
   if (!to.name || to.name === 'mainView') {
