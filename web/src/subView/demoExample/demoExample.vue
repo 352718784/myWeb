@@ -22,9 +22,11 @@ import LoadingIconWindow from '../../components/loadingIcon/loadingIconWindow'
 import HoverEffectWindow from '../../components/hoverEffect/hoverEffectWindow'
 import MulticardDisplayWindow from '../../components/multiCardDisplay/multicardDisplayWindow'
 import PieMenuWindow from '../../components/pieMenu/pieMenuWindow'
+import HLoadingWindow from '../../components/HLoading/HLoadingWindow'
 export default {
   name: 'demoExample',
   components: {
+    HLoadingWindow,
     PieMenuWindow,
     MulticardDisplayWindow,
     HoverEffectWindow,
@@ -43,9 +45,10 @@ export default {
         {name: 'loading图标', component: 'loading-icon-window'},
         {name: '一些有趣的hover效果', component: 'hover-effect-window'},
         {name: '多卡片显示效果', component: 'multicard-display-window'},
-        {name: '转盘菜单', component: 'pie-menu-window'}
+        {name: '转盘菜单', component: 'pie-menu-window'},
+        {name: 'elementUI中的v-loading', component: 'h-loading-window'}
       ],
-      selectedDemo: {name: '转盘菜单', component: 'pie-menu-window'}
+      selectedDemo: {name: 'elementUI中的v-loading', component: 'h-loading-window'}
     }
   },
   created () {

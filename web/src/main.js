@@ -7,10 +7,12 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import popFunc from './components/popFunc/index'
+import hLoading from './components/HLoading/HLoading'
 import ableDrapedEl from './components/draggingComp/ableDrapedEl'
 Vue.use(ElementUI)
 Vue.use(ableDrapedEl)
 Vue.use(popFunc)
+Vue.use(hLoading)
 router.beforeEach((to, from, next) => {
   if (!to.name || to.name === 'mainView') {
     next({path: '/mainView/mainPage'})

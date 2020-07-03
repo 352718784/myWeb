@@ -108,7 +108,7 @@ export default {
     >.card{
       height: 16rem;width: 10rem;
       transition: opacity .5s, transform 0.5s;position: absolute;color: white;
-      box-sizing: border-box;
+      box-sizing: border-box;overflow: hidden;
       transform-origin: 0 0;transition-delay: .1s;
       &.hidden{
         opacity: 0;
