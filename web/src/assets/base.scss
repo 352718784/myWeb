@@ -28,13 +28,13 @@ P{
 
 //h-loading 指令中需要使用到的class
 .h-loading-fade-enter-active, .h-loading-fade-leave-active {
-  transition: opacity .2s;
+  //transition: opacity .2s;
 }
 .h-loading-fade-enter, .h-loading-fade-leave-to {
   opacity: 0;
 }
 .h-loading-relative{
-  position: relative;
+  position: relative;overflow: hidden;
   >.h-loading-shade{
     position: absolute;left: 0;top: 0;width: 100%;height: 100%;
     display: flex;align-items: center;justify-content: center;

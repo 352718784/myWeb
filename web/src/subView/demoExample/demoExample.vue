@@ -23,9 +23,11 @@ import HoverEffectWindow from '../../components/hoverEffect/hoverEffectWindow'
 import MulticardDisplayWindow from '../../components/multiCardDisplay/multicardDisplayWindow'
 import PieMenuWindow from '../../components/pieMenu/pieMenuWindow'
 import HLoadingWindow from '../../components/HLoading/HLoadingWindow'
+import CanvasDemo1 from '../../components/canvasDemo/canvasDemo1'
 export default {
   name: 'demoExample',
   components: {
+    CanvasDemo1,
     HLoadingWindow,
     PieMenuWindow,
     MulticardDisplayWindow,
@@ -46,9 +48,10 @@ export default {
         {name: '一些有趣的hover效果', component: 'hover-effect-window'},
         {name: '多卡片显示效果', component: 'multicard-display-window'},
         {name: '转盘菜单', component: 'pie-menu-window'},
-        {name: 'elementUI中的v-loading', component: 'h-loading-window'}
+        {name: 'elementUI中的v-loading', component: 'h-loading-window'},
+        {name: 'canvasDemo', component: 'canvas-demo1'}
       ],
-      selectedDemo: {name: 'elementUI中的v-loading', component: 'h-loading-window'}
+      selectedDemo: {name: 'canvasDemo', component: 'canvas-demo1'}
     }
   },
   created () {
