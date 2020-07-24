@@ -1,27 +1,24 @@
 <template>
-    <div>demo</div>
+    <div>
+      {{msg}}
+      <button @click="test">hello hsq</button>
+    </div>
 </template>
 
 <script>
+import demoMixin from './demoMixin'
 export default {
   name: 'demo',
-  beforeCreate () {
-    console.log('beforeCreate')
+  mixins: [demoMixin],
+  data () {
+    return {
+      msg: 'hello, zr'
+    }
   },
-  created () {
-    console.log('created')
-  },
-  beforeMount () {
-    console.log('beforeMount')
-  },
-  mounted () {
-    console.log('mounted')
-  },
-  beforeDestroy () {
-    console.log('beforeDestroy')
-  },
-  destroyed () {
-    console.log('destroyed')
+  methods: {
+    test () {
+      console.log(this.name)
+    }
   }
 }
 </script>

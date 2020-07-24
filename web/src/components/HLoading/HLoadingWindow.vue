@@ -6,6 +6,13 @@
       （loading: {{loading}}  empty: {{empty}}）
       <div class="h-loading-window" v-h-loading="{loading: loading, empty: empty}"></div>
       <section>
+        <h4>7月21号更新</h4>
+        <p>改指令会在绑定过程中对节点添加 position: relative 的样式，同时如果该节点可以滚动，会造成背景图片也可以被滚动</p>
+        <p>针对这个问题，进行了优化，在初始化和更新过程中，如果loading 或 empty 为 true， 对节点添加样式<strong> position: relative;overflow: hidden; </strong> ，同时mask组件监听了afterLeave事件，
+        该事件触发时，如果loading和empty均为false，对节点移除样式</p>
+      </section>
+      <el-divider>我是分割线</el-divider>
+      <section>
         <h4>使用方法：</h4>
         <p>需要绑定一个对象，loading 和 empty 属性名暂时不可修改，通过控制对于属性的true 或 false，页面设置为加载中状态或者无数据状态</p>
         <img src="static/image/hl1.png">

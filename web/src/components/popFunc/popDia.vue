@@ -1,6 +1,7 @@
 <template>
-  <transition name="fade">
-    <div class="popDia" @mouseenter="$emit('show')" v-show="show">
+  <transition name="fade"
+              v-on:after-leave="afterLeave">
+    <div class="popDia" v-show="show" @mouseenter="mouseIn(true)" @mouseleave="mouseIn(false)">
       <slot>Submit</slot>
     </div>
   </transition>
@@ -12,7 +13,13 @@ export default {
   props: {
     show: {type: Boolean, default: false}
   },
-  mounted () {
+  methods: {
+    afterLeave (val) {
+      this.$emit('startDestroy')
+    },
+    mouseIn (val) {
+      this.$emit('mouseIn', val)
+    }
   }
 }
 </script>
@@ -22,7 +29,7 @@ export default {
   position: absolute;padding: .5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   border-radius: .2rem;
-  color: #606266;background-color: white;
+  color: #606266;background-color: white;font-size: .8rem;
 }
 .fade-enter-active, .fade-leave-active{
   transition: opacity .3s

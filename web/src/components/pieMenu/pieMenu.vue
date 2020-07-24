@@ -1,15 +1,15 @@
 <template>
-    <div class="pieMenu center">
-      <div :style="{transition: `transform ${duration}ms, opacity ${duration}ms`,width: item.r*2+'px',height: item.r+'px',zIndex: selectedMenu.length - index}"
-           :key="item.id" v-for="(item, index) in selectedMenu"
-           :class="['turntable',`turntable${item.level}`, item.expand?'show':'hidden']">
-        <div class="center zero" :style="item1.style" @click="expandMenu(item1.children, item1.level + 1, item1)" :key="item1.id" v-for="item1 in item.children">
-          <div class="menu-icon center" :style="{transform: `rotateZ(${360-item1.deg}deg)`}">
-            {{item1.name}}
+      <transition-group tag="div" class="pieMenu center" name="">
+        <div :style="{transition: `transform ${duration}ms, opacity ${duration}ms`,width: item.r*2+'px',height: item.r+'px',zIndex: selectedMenu.length - index}"
+             :key="item.id" v-for="(item, index) in selectedMenu"
+             :class="['turntable',`turntable${item.level}`, item.expand?'show':'hidden']">
+          <div class="center zero" :style="item1.style" @click="expandMenu(item1.children, item1.level + 1, item1)" :key="item1.id" v-for="item1 in item.children">
+            <div class="menu-icon center" :style="{transform: `rotateZ(${360-item1.deg}deg)`}">
+              {{item1.name}}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </transition-group>
 </template>
 
 <script>
@@ -31,10 +31,6 @@ export default {
   },
   methods: {
     expandMenu (args, level, item) {
-      if (item) {
-        debugger
-      }
-      // let hiddenSelector = this.selectedMenu.filter(a => a.level >= level && a.expand).map(a => `.turntable${a.level}`).join(',')
       let needHidden = false
       this.selectedMenu.forEach((a, i) => {
         if (a.level < level) {
@@ -60,7 +56,6 @@ export default {
     }
   },
   mounted () {
-    // this.r = this.$el.querySelector('.circle1').offsetWidth / 2
     let maxLevel = 1
     this.menu.forEach((a, i) => {
       a.level = 1

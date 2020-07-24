@@ -5,15 +5,14 @@ const hLoading = {
     const Mask = Vue.extend({
       render (createElement, hack) {
         let vLoading = createElement('div',
-          {key: 'loading', attrs: {class: 'h-loading-shade loading'}, style: {transition: `opacity 200ms`}},
+          {key: 'loading', attrs: {class: 'h-loading-shade loading'}},
           [createElement('img', {attrs: {src: require('static/image/loading.gif')}})])
         let vEmpty = createElement('div',
-          {key: 'empty', attrs: {class: 'h-loading-shade'}, style: {transition: `opacity 200ms`}},
+          {key: 'empty', attrs: {class: 'h-loading-shade'}},
           [createElement('img', {attrs: {src: require('static/image/empty.png')}})])
         return createElement('transition', {
-          props: {
-            name: 'h-loading-fade', mode: 'out-in'
-          }
+          props: {name: 'h-loading-fade', mode: 'out-in'},
+          on: {afterLeave: this.leave}
         }, [this.loading ? vLoading
           : (this.empty ? vEmpty : null)])
       },
@@ -21,6 +20,12 @@ const hLoading = {
         return {
           loading: false, // 加载层显示控制
           empty: false // 空数据层显示控制
+        }
+      },
+      methods: {
+        // 动画结束后会触发改方法，生成removeClass事件
+        leave () {
+          (!this.loading && !this.empty) && this.$emit('removeClass')
         }
       }
     })
@@ -43,6 +48,9 @@ const hLoading = {
         })
         el.instance = mask // 将组件实例挂在el下
         el.mask = mask.$el // 组件挂载成功后的dom挂在el下
+        mask.$on('removeClass', _ => {
+          editClass(false, el)
+        })
         editClass(binding.value.loading || binding.value.empty, el)// 修改绑定的el的class，新增的class 可在全局样式中查看
         el.appendChild(mask.$el) // 绑定的el中添加dom节点
       },
@@ -51,11 +59,8 @@ const hLoading = {
         if (!binding.value.empty && !binding.value.loading) {
           el.instance.loading = binding.value.loading
           el.instance.empty = binding.value.empty
-          setTimeout(_ => {
-            editClass(binding.value.loading || binding.value.empty, el)
-          }, 200)
         } else {
-          editClass(binding.value.loading || binding.value.empty, el)
+          editClass(true, el)
           el.instance.loading = binding.value.loading
           el.instance.empty = binding.value.empty
         }

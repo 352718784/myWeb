@@ -3,72 +3,72 @@ const popFunc = {
   install (Vue) {
     Vue.directive('showTitle', {
       bind (dom, binding) {
-        console.log(binding.value)
-        let vm = false
         dom.addEventListener('mouseenter', e => {
-          vm = pop(binding.value, e)
+          if (dom._vm) {
+            dom._vm.mouseIn = true
+            dom._vm.show = true
+          } else {
+            dom._vm = pop(binding.value, e)
+            dom._vm.$on('startDestroy', _ => {
+              dom._vm.$el.remove()
+              dom._vm.$destroy()
+              dom._vm = null
+            })
+          }
         })
         dom.addEventListener('mouseleave', e => {
-          close(vm)
+          dom._vm.mouseIn = false
+          setTimeout(_ => {
+            if (!dom._vm.mouseIn) dom._vm.show = false
+          }, 100)
         })
-      },
-      inserted (e) {
       }
     })
     Vue.component('pop-dia', popDia)
-    function close (vm) {
-      vm.show = false
-      // 把组件实例销毁的过程放在异步方法中，否则组件销毁后，nextTick不会因为show值改变后的视图修改
-      vm.$nextTick(() => {
-        vm.$el.addEventListener('transitionend', (e) => {
-          let dom = e.target
-          document.body.removeChild(dom)
-          if (dom) dom = null
-        }, false)
-        vm.$destroy()
-        vm = null
-      })
-    }
     function pop (vnode, e) {
       // 新增vue子类
       let VuePopDia = Vue.extend({
         render (c) {
           let props = {show: this.show}
           let style = {position: 'absolute', left: `${this.x}px`, top: `${this.y}px`}
-          return c('pop-dia', {props, style, on: { close: this.closeDia }}, [vnode])
+          let on = {startDestroy: this.startDestroy, mouseIn: this.setMouseIn}
+          return c('pop-dia', {props, style, on}, [vnode])
         },
         data () {
           return {
             show: false,
             x: 0,
-            y: 0
+            y: 0,
+            mouseIn: false
           }
         },
         methods: {
-          closeDia () {
-            this.$emit('close')
+          startDestroy () {
+            this.$emit('startDestroy')
+          },
+          setMouseIn (val) {
+            this.mouseIn = val
+            if (!val) {
+              setTimeout(_ => {
+                if (!this.mouseIn) this.show = false
+              }, 100)
+            }
           }
         }
       })
       // 实例组件
       let vm = new VuePopDia().$mount()
-      vm.$on('close', () => {
-        close(vm)
-      })
       let el = vm.$el
-      vm.show = true
       document.body.appendChild(el)
-      vm.$closeDia = close
+      vm.show = true
       if (e) {
         vm.$nextTick(() => {
           vm.x = e.pageX - e.offsetX - vm.$el.offsetWidth / 2 + e.currentTarget.offsetWidth / 2; vm.y = e.pageY - e.offsetY - vm.$el.offsetHeight - 10
           if (vm.x < 5) vm.x = 5
-          console.log(vm.$el.offsetHeight, vm.$el.offsetWidth, e.currentTarget.offsetWidth)
         })
       }
       return vm
     }
-    Vue.prototype.$titlePop = pop
   }
 }
 export default popFunc

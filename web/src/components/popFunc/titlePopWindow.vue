@@ -28,6 +28,19 @@
         <strong>注意事项：</strong>
         <li :key="index" v-for="(item, index) in note">{{item}}</li>
       </ol>
+      <section>
+        <h4>7月25号更新</h4>
+        <p>title窗口延迟关闭，在鼠标离开后马上进入title窗口将不会关闭，目前这个时间段是100ms</p>
+        <p>使用transition的afterLeave事件来驱动组件销毁和页面中title节点清除，解决了非必现$el节点没有清除的问题</p>
+        <p>指令绑定节点，mouseenter时，如果vm组件存在，显示窗口，mouseIn用来标记鼠标位置，当他为true时，会阻止弹窗关闭和组件销毁，同时监听组件的destroy事件，触发时销毁组件
+        在mouseleave时，延迟100ms 销毁组件和窗口</p>
+        <img src="static/image/202007247.png"/>
+        <p>鼠标移入移出窗口或者窗口消失动画完成，生成对应的事件</p>
+        <img src="static/image/202007248.png"/>
+        <p>鼠标移出窗口时，延迟关闭窗口，在延迟时间内，鼠标再次移入窗口或者绑定节点时，将不会关闭窗口</p>
+        <img src="static/image/202007249.png"/>
+      </section>
+      <el-divider>我是可爱的分割线</el-divider>
       <div>
         <strong>关键代码：</strong>
         <div :key="index" v-for="(item, index) in img">

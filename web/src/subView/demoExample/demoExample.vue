@@ -24,9 +24,14 @@ import MulticardDisplayWindow from '../../components/multiCardDisplay/multicardD
 import PieMenuWindow from '../../components/pieMenu/pieMenuWindow'
 import HLoadingWindow from '../../components/HLoading/HLoadingWindow'
 import CanvasDemo1 from '../../components/canvasDemo/canvasDemo1'
+import Demo from '../../components/demo'
+import eventBus from '../../components/eventBus'
+import HPoppverWindow from '../../components/hPopover/hPoppverWindow'
 export default {
   name: 'demoExample',
   components: {
+    HPoppverWindow,
+    Demo,
     CanvasDemo1,
     HLoadingWindow,
     PieMenuWindow,
@@ -49,12 +54,17 @@ export default {
         {name: '多卡片显示效果', component: 'multicard-display-window'},
         {name: '转盘菜单', component: 'pie-menu-window'},
         {name: 'elementUI中的v-loading', component: 'h-loading-window'},
-        {name: 'canvasDemo', component: 'canvas-demo1'}
+        {name: '基于el-poppver进行的二次封装，主要对样式进行了调整', component: 'h-poppver-window'},
+        {name: 'canvasDemo', component: 'canvas-demo1'},
+        {name: '测试代码', component: 'demo'}
       ],
-      selectedDemo: {name: 'canvasDemo', component: 'canvas-demo1'}
+      selectedDemo:  {name: '基于el-poppver进行的二次封装，主要对样式进行了调整', component: 'h-poppver-window'},
     }
   },
   created () {
+    eventBus.$on('hello', r => {
+      console.log('接受到消息', r)
+    })
   },
   methods: {
     computedPosition (e) {
