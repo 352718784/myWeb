@@ -56,5 +56,20 @@ const comm = new class {
     query(tree, fn)
     return target
   }
+  // 使用generator函数对树型数据遍历
+  * traversalTree (tree) {
+    for (let i of tree) {
+      yield i
+      if (i.children && i.children.length) {
+        yield * this.traversalTree(i.children)
+      }
+    }
+  }
+  * idCreate () {
+    let id = 0
+    while (true) {
+      yield id++
+    }
+  }
 }()
 export default comm

@@ -29,7 +29,7 @@ export default {
         {name: '主页', id: '/mainView/mainPage'},
         {name: '开发工具', id: '/mainView/devTools'},
         {name: 'demo样例', id: '/mainView/demoExample'},
-        {name: '问题收集', id: '/mainView/collectedQuestions'},
+        {name: '问题收集', id: '/mainView/collectedQuestions'}
       ]
     }
   },
@@ -50,7 +50,7 @@ export default {
 
 <style scoped lang="scss">
   .menuBar{
-    display: flex;position: relative;user-select: none;
+    display: flex;position: relative;user-select: none;margin: 1rem;
     >a{
       margin: .5rem 1rem;cursor: pointer;color: gray;
       &.activity{

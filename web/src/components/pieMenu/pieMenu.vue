@@ -5,7 +5,7 @@
              :class="['turntable',`turntable${item.level}`, item.expand?'show':'hidden']">
           <div class="center zero" :style="item1.style" @click="expandMenu(item1.children, item1.level + 1, item1)" :key="item1.id" v-for="item1 in item.children">
             <div class="menu-icon center" :style="{transform: `rotateZ(${360-item1.deg}deg)`}">
-              {{item1.name}}
+              <slot :data="item1"></slot>
             </div>
           </div>
         </div>
@@ -21,9 +21,7 @@ export default {
   },
   data () {
     return {
-      size: 10,
-      size2: 18,
-      r: 40,
+      r: 60,
       selectedMenu: [],
       duration: 300,
       zoomRate: 1
@@ -51,7 +49,6 @@ export default {
             a.children = []
           }
         })
-        console.log(this.selectedMenu)
       }, needHidden ? this.duration : 0)
     }
   },
@@ -92,7 +89,6 @@ export default {
     this.$nextTick(() => {
       this.expandMenu(this.menu, 1)
     })
-    // console.log(this.selectedMenu, maxLevel)
   }
 }
 </script>

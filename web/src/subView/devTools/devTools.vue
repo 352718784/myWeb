@@ -51,7 +51,8 @@ export default {
         {name: 'axios 中文文档', src: 'https://www.kancloud.cn/yunye/axios/234845'},
         {name: '力扣，训练逻辑思维', src: 'https://leetcode-cn.com/'},
         {name: '蓝狐，设计图稿', src: 'https://lanhuapp.com/web/#/item'},
-        {name: 'scss 中文文档', src: 'https://www.sass.hk/docs/'}
+        {name: 'scss 中文文档', src: 'https://www.sass.hk/docs/'},
+        {name: 'VueLoader', src: 'https://vue-loader.vuejs.org/zh/'}
       ],
       selectedItem: false,
       searchValue: '',

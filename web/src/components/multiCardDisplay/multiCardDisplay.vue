@@ -1,16 +1,13 @@
 <template>
     <div class="multiCardDisplay">
-      <div :class="['card', mode==='gather'?'':'']" :data-index="index" v-for="(item, index) in cardsData"
+      <div :class="['card', mode==='expand'?'':'']" :data-index="index" v-for="(item, index) in cardsData"
            :style="{...item.style,
            ...{'z-index': selectedIndex===index?cardsData.length+1:cardsData.length-index}}"
            @click="paging(index)"
-           @dblclick="gather(index)"
+           @dblclick="expand(index)"
            :key="item.id">
         <slot :data="{item, selectedIndex}"></slot>
       </div>
-      <template v-if="mode==='gather'">
-        <el-button class="exit" @click="expand">exit</el-button>
-      </template>
     </div>
 </template>
 
@@ -47,7 +44,7 @@ export default {
       this.paging(this.selectedIndex)
     },
     paging (i) {
-      if (this.mode === 'gather') {
+      if (this.mode === 'expand') {
         this.selectedIndex = i
         let zoomRatio = 0.8
         let x = (this.$el.offsetWidth - this.w) / 2
@@ -59,14 +56,14 @@ export default {
         })
       }
     },
-    expand () {
-      this.mode = 'expand'
+    gather () {
+      this.mode = 'gather'
       this.cardsData.forEach((a, i) => {
         a.style.transform = `translate(${a.l}px, ${a.t}px) scale(${this.zoomRatio})`
       })
     },
-    gather (index = 0) {
-      this.mode = 'gather'
+    expand (index = 0) {
+      this.mode = 'expand'
       this.$nextTick(() => {
         this.$el.scrollTop = 0
         this.paging(index)
@@ -108,7 +105,7 @@ export default {
     >.card{
       height: 16rem;width: 10rem;
       transition: opacity .5s, transform 0.5s;position: absolute;color: white;
-      box-sizing: border-box;overflow: hidden;
+      box-sizing: border-box;overflow: visible;
       transform-origin: 0 0;transition-delay: .1s;
       &.hidden{
         opacity: 0;

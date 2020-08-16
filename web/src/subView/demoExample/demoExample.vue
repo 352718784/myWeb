@@ -1,13 +1,15 @@
 <template>
     <article class="demoExample">
       <dl class="catalog part">
-        <dt class="catalog-item"
-            :key="index" @click="selectedDemo=item"
-            v-for="(item, index) in catalog">{{item.name}}</dt>
+        <dt v-if="!item.hidden" :class="['catalog-item', item.component === example?'checked':'']"
+            :key="index" @click="$router.push({query: {example: item.component}})"
+            v-for="(item, index) in catalog">
+          {{item.name}}
+        </dt>
       </dl>
       <section class="window part">
-        <component v-if="selectedDemo" key="sub-window" class="sub-window"
-                   :is="selectedDemo.component"></component>
+        <component v-if="example" key="sub-window" class="sub-window"
+                   :is="example"></component>
       </section>
       <nav></nav>
     </article>
@@ -27,9 +29,15 @@ import CanvasDemo1 from '../../components/canvasDemo/canvasDemo1'
 import Demo from '../../components/demo'
 import eventBus from '../../components/eventBus'
 import HPoppverWindow from '../../components/hPopover/hPoppverWindow'
+import MyPromiseWindow from '../../components/myPromise/myPromiseWindow'
+import KARExample from '../../components/KARExample/KARExample'
+import KSHExample from '../../components/KSHExample/KSHExample'
 export default {
   name: 'demoExample',
   components: {
+    KSHExample,
+    KARExample,
+    MyPromiseWindow,
     HPoppverWindow,
     Demo,
     CanvasDemo1,
@@ -42,6 +50,9 @@ export default {
     Parallax,
     TitlePopWindow,
     ShaingWaterWindow},
+  props: {
+    example: {default: 'shaing-water-window'}
+  },
   data () {
     return {
       catalog: [
@@ -55,10 +66,13 @@ export default {
         {name: '转盘菜单', component: 'pie-menu-window'},
         {name: 'elementUI中的v-loading', component: 'h-loading-window'},
         {name: '基于el-poppver进行的二次封装，主要对样式进行了调整', component: 'h-poppver-window'},
-        {name: 'canvasDemo', component: 'canvas-demo1'},
-        {name: '测试代码', component: 'demo'}
+        {name: 'Promise 简易实现', component: 'my-promise-window'},
+        {name: 'canvasDemo', component: 'canvas-demo1', hidden: true},
+        {name: '测试代码', component: 'demo'},
+        {name: 'kar测试代码', component: 'k-a-r-example'},
+        {name: '可视化测试代码', component: 'k-s-h-example'}
       ],
-      selectedDemo:  {name: '基于el-poppver进行的二次封装，主要对样式进行了调整', component: 'h-poppver-window'},
+      selectedDemo: 'hover-effect-window'
     }
   },
   created () {
@@ -97,12 +111,25 @@ export default {
     margin: .5rem;
     width: 15rem;
     >.catalog-item{
-      margin: .5rem;cursor: pointer;user-select: none;
-      color: $fontCol2;
+      margin: .3rem;cursor: pointer;user-select: none;
+      color: $fontCol2;position: relative;padding: .2rem;
+      transition: all .3s;border-radius: .2rem;
+      background-image: linear-gradient(to right,$blue1 50%, rgba(255, 255, 255, 0) 0%);
+      background-position: left;background-size: 0;
+      background-repeat: no-repeat;
+      &:hover{
+        color: white;background-size: 200%;
+      }
+      &.checked{
+        color: white;background-size: 200%;
+      }
     }
   }
   .window{
     flex: 1; overflow: scroll;
     margin: .5rem .5rem .5rem 0;
+  }
+  .sub-window{
+    width: 100%; height: 100%;
   }
 </style>

@@ -43,3 +43,12 @@ img{
     background-color: #ffffff9e;
   }
 }
+// 旋转动画
+@keyframes rotate {
+  from{
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotateZ(360deg);
+  }
+}
